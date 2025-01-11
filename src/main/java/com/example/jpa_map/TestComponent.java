@@ -18,15 +18,18 @@ public class TestComponent {
 
   @PostConstruct
   public void test () {
+    log.info("**** Find company by id ****");
     Company company = companyService.findCompany(2);
     log.info("*** Company found: " + company.getName() + " ****");
 
 
-    company.setName("Test updated name");
+    log.info("**** Running company data update ****");
+    company.setName("Some new name");
     companyService.update(company);
+    log.info("**** Company update success ****");
 
-    log.info("**** Company updated ****");
 
+    log.info("**** Find company by id ****");
     Company updated = companyService.findCompany(2);
     log.info("**** Company found: " + updated.getName() + "****");
 
